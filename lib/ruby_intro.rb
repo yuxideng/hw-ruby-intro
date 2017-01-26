@@ -1,27 +1,31 @@
 # When done, submit this entire file to the autograder.
 
 # Part 1
-
 def sum arr
-  # YOUR CODE HERE
+  if arr.length == 0 total =0
+  else 
+  total = 0
+  arr.each {|x| total+= x}
+  put total
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  return arr.sort.reverse[0]+arr.sort.reverse[1]
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+ 
 end
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  puts "hello " + name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  s.downcase!
+  return s[0] != 'a' && s[0] != 'e'&&s[0] != 'i' && s[0] != 'o'&& s[0] != 'u'
 end
 
 def binary_multiple_of_4? s
