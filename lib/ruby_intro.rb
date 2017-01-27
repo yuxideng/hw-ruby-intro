@@ -1,19 +1,25 @@
-# When done, submit this entire file to the autograder.
+
 
 # Part 1
+
 def sum arr
-  if arr.length == 0 total = 0
-  else 
-  total = 0
-  arr.each {|x| total+= x}
-  puts total
+ sum = 0
+ arr.each {|x| sum+= x}
+ return sum
 end
 
 def max_2_sum arr
+  if arr.length == 0 
+      return 0g
+  elsif arr.length == 1 
+      return arr[0]
+  else
   return arr.sort.reverse[0]+arr.sort.reverse[1]
+  end
 end
 
 
+#checked the usage of include? from stack overflow. Have bugs 
 def sum_to_n? arr, n
  arr.sort!
  arr.each do |x|
@@ -25,38 +31,47 @@ end
 # Part 2
 
 def hello(name)
-  puts "hello " + name
+  return "Hello, " + name
 end
 
+
+#help from Prabir Pradhan
 def starts_with_consonant? s
-  s.downcase!
-  return s[0] != 'a' && s[0] != 'e'&&s[0] != 'i' && s[0] != 'o'&& s[0] != 'u'
+  return (s =~ /^(?![aeiou]).*/i) && (s =~ /^[a-z].*/i)
 end
 
 def binary_multiple_of_4? s
-  num = s.to_i(2)
-  if num == 0 
-    return false
-  elsif num % 4 == 0
-    return true
-  else 
-    return false
-  end
+  return (s =~ /^(1*0*)*00$/) || s =~ /^00*$/
 end
 
 # Part 3
 
+
 class BookInStock
-  def initialize(isbn,price)
-    if isbn.length == 0 || price <= 0
-      return ArgumentError
-    else
-     @isbn = isbn
-     @price = price
-    end
+
+ def initialize my_isbn, my_price
+    raise ArgumentError, "invalid args" if my_isbn.empty? || my_price <= 0
+      @isbn = my_isbn
+      @price = my_price
+  end
+
+  def price
+    @price
+  end
+ 
+  def price=(new_price)
+    @price = new_price
+  end
+
+  def isbn
+    @isbn
+  end
+ 
+  def isbn=(new_isbn)
+    @isbn = new_isbn
   end
   
-  def price_as_string
+   def price_as_string
     p = @price.round(2)
     len = p.to_s.split(".")[1].length
     if len ==2
@@ -65,6 +80,4 @@ class BookInStock
       return "$"+ "#{p}" + 0.to_s
     end
   end
-end
-  
-  
+end  
